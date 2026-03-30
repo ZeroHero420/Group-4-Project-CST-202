@@ -1,7 +1,7 @@
 #include "Standard.h"
 #include "Functions.h"
 
-// Small Numbers Funcation - 5 random integer numbers between 1 and 100
+// Small Numbers Function - 5 random integer numbers between 1 and 100
 void SmallNumbersGenernator()
 {
 	int loopCount;                                               // Loop counter for the number of iterations
