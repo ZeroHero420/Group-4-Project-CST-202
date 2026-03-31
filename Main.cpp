@@ -3,36 +3,38 @@
 #include "InsertionSort.h"
 #include "Functions.h"
 
-int main() {
-	int choice;                                  // Choice for menu selection
+int main()
+{
+    int choice;                                  // Choice for menu selection
 
-	int arr[100];                                // Array to hold the integers read from the file up to 100 elements
+    int arr[100];                                // Array to hold the integers read from the file up to 100 elements
 
-	int size;                                    // Variable to hold the size of the array
+    int size;                                    // Variable to hold the size of the array
 
-	// Arrays for sorting
-	int bubbleArr[100];                          // Array to hold the integers for Bubble Sort up to 100 elements
-	int insertionArr[100]; 		                 // Array to hold the integers for Insertion Sort up to 100 elements
+    // Arrays for sorting
+    int bubbleArr[100];                          // Array to hold the integers for Bubble Sort up to 100 elements
+    int insertionArr[100]; 		                 // Array to hold the integers for Insertion Sort up to 100 elements
 
     // Counter for bubblesort
-	int bubbleComp;                              // Variable to count comparisons in Bubble Sort
-	int bubbleSwap;                              // Variable to count swaps in Bubble Sort
+    int bubbleComp;                              // Variable to count comparisons in Bubble Sort
+    int bubbleSwap;                              // Variable to count swaps in Bubble Sort
 
     // Counter for insertionsort
-	int insertComp;                              // Variable to count comparisons in Insertion Sort
-	int insertSwap;                              // Variable to count swaps in Insertion Sort
+    int insertComp;                              // Variable to count comparisons in Insertion Sort
+    int insertSwap;                              // Variable to count swaps in Insertion Sort
 
-	// Variables for file names
-	string inputFile;                            // Variable to hold the name of the input file
-	string outputFile;                           // Variable to hold the name of the output file
+    // Variables for file names
+    string inputFile;                            // Variable to hold the name of the input file
+    string outputFile;                           // Variable to hold the name of the output file
 
     // Code Report Memory Leak
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
     // Menu Header
-	PrintHeader(static_cast<ofstream&>(cout), DASH);
+    PrintHeader(static_cast<ofstream&>(cout), DASH);
 
-    do {
+    do
+    {
 
         // Menu Display
         cout << "\n1. SmallRandom.txt\n";
@@ -50,35 +52,35 @@ int main() {
             // 4 random integer numbers
             inputFile = "SmallRandom.txt";
             outputFile = "Output1SmallRandom.txt";
-			SmallNumbersGenernator();
+            SmallNumbersGenernator();
             break;
 
         case 2:
             // 25 descending integer numbers
             inputFile = "Descend.txt";
             outputFile = "Output2Descend.txt";
-			DescendingGenernator();
+            DescendingGenernator();
             break;
 
         case 3:
             // 10 ascending integer numbers
             inputFile = "Ascend.txt";
             outputFile = "Output3Ascend.txt";
-			AscendingGenernator();
+            AscendingGenernator();
             break;
 
         case 4:
             // 50 random integer numbers
             inputFile = "LargeRandom.txt";
             outputFile = "Output4LargeRandom.txt";
-			LargeRandomGenernator();
+            LargeRandomGenernator();
             break;
 
         case 5:
             // Empty File
             inputFile = "Empty.txt";
             outputFile = "Output5Empty.txt";
-			EmptyGenernator();
+            EmptyGenernator();
             break;
 
         case 6:
@@ -95,18 +97,20 @@ int main() {
 
             size = 0; // Reset size for each file
 
-			size = 0; // Reset size for each file
+            size = 0; // Reset size for each file
 
             ifstream fin(inputFile);
             ofstream fout(outputFile);
 
             //read the file
-            while (fin >> arr[size]) {
+            while (fin >> arr[size])
+            {
                 size++;
             }
 
-			// Copy the original array to the sorting arrays
-            for (int index = 0; index < size; index++) {
+            // Copy the original array to the sorting arrays
+            for (int index = 0; index < size; index++)
+            {
                 bubbleArr[index] = arr[index];
                 insertionArr[index] = arr[index];
             }
@@ -136,68 +140,66 @@ int main() {
                     fout << "\n";
                 }
 
-			// Output the result after bubble sort
-            fout << "\nBubbleSort After: \n";
-            for (int index = 0; index < size; index++)
-            {
-                // Rows of 10s
-                if (index != 0 && index % 10 == 0)
+                // Output the result after bubble sort
+                fout << "\nBubbleSort After: \n";
+                for (int index = 0; index < size; index++)
                 {
-                    fout << "\n";
+                    // Rows of 10s
+                    if (index != 0 && index % 10 == 0)
+                    {
+                        fout << "\n";
+                    }
+
+                    fout << bubbleArr[index] << " ";
                 }
 
-                fout << bubbleArr[index] << " ";
-            }
+                // Output the number of comparisons and swaps for bubble sort
+                fout << "\nComparisons: " << bubbleComp;
+                fout << "\nSwaps: " << bubbleSwap << "\n\n\n";
 
-			// Output the number of comparisons and swaps for bubble sort
-            fout << "\nComparisons: " << bubbleComp;
-            fout << "\nSwaps: " << bubbleSwap << "\n\n\n";
-
-			// Output the result before insertion sort
-            fout << "InsertionSort Before: \n";
-            for (int index = 0; index < size; index++)
-            {
-                // Rows of 10s
-                if (index != 0 && index % 10 == 0)
+                // Output the result before insertion sort
+                fout << "InsertionSort Before: \n";
+                for (int index = 0; index < size; index++)
                 {
-                    fout << "\n";
+                    // Rows of 10s
+                    if (index != 0 && index % 10 == 0)
+                    {
+                        fout << "\n";
+                    }
+
+                    fout << arr[index] << " ";
                 }
 
-                fout << arr[index] << " ";
-            }
-
-			// Output the result after insertion sort
-            fout << "\nInsertion Sort After: \n";
-            for (int index = 0; index < size; index++)
-            {
-
-                // Rows of 10s
-                if (index != 0 && index % 10 == 0)
+                // Output the result after insertion sort
+                fout << "\nInsertion Sort After: \n";
+                for (int index = 0; index < size; index++)
                 {
-                    fout << "\n";
+
+                    // Rows of 10s
+                    if (index != 0 && index % 10 == 0)
+                    {
+                        fout << "\n";
+                    }
+
+                    fout << insertionArr[index] << " ";
                 }
 
-                fout << insertionArr[index] << " ";
+                // Output the number of comparisons and swaps for insertion sort
+                fout << "\nComparisons: " << insertComp;
+                fout << "\nSwaps:" << insertSwap << "\n\n";
+
+
+                fout << " " << endl;
+
+                // Close the files
+                fin.close();
+                fout.close();
+
+                // Output success message
+                cout << inputFile << " Processing successfully completed!" << endl;
             }
-
-            // Output the number of comparisons and swaps for insertion sort
-            fout << "\nComparisons: " << insertComp;
-            fout << "\nSwaps:" << insertSwap << "\n\n";
-
-
-            fout << " " << endl;
-
-            // Close the files
-            fin.close();
-            fout.close();
-
-			// Output success message
-            cout << inputFile << " Processing successfully completed!" << endl;
         }
-    }
-
-    while (choice != 6);
+    } while (choice != 6);
 
     return 0;
-
 }
