@@ -142,7 +142,7 @@ int main() {
             //output results
             fout << "Input File: " << inputFile << "\n\n\n";
 
-            // Output the result befroe bubble sort
+            // Output the result beforbubble sort
             fout << "BubbleSort Before: \n";
             for (int index = 0; index < size; index++)
             {
@@ -202,6 +202,7 @@ int main() {
             // Output the number of comparisons and swaps for insertion sort
             fout << "\nComparisons: " << insertComp;
             fout << "\nSwaps:" << insertSwap << "\n\n";
+
 
             fout << " " << endl;
 
