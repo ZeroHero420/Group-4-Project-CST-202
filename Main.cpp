@@ -82,7 +82,7 @@ int main() {
             break;
 
         case 6:
-			// Exit the program
+            // Exit the program
             cout << "Exiting the program...\n";
             break;
 
@@ -92,6 +92,8 @@ int main() {
 
         //if a user entered any choice ranging from 1 through 5, inclusively (i.e. valid file choice)
         if (choice >= 1 && choice <= 5) {
+
+            size = 0; // Reset size for each file
 
 			size = 0; // Reset size for each file
 
@@ -113,9 +115,9 @@ int main() {
             bubbleComp = 0;                           // Reset comparison count for Bubble Sort
             bubbleSwap = 0;                           // Reset swap count for Bubble Sort
 
-            // Counter for insertionsort
-            insertComp = 0;                           // Reset comparison count for Insertion Sort
-            insertSwap = 0;                           // Reset swap count for Insertion Sort
+            // Counter for insertion sort
+            insertComp = 0;              // Reset comparison count for Insertion Sort
+            insertSwap = 0;              // Reset swap count for Insertion Sort
 
             //run the sorts
             BubbleSort(bubbleArr, size, bubbleComp, bubbleSwap);
@@ -124,25 +126,22 @@ int main() {
             //output results
             fout << "Input File: " << inputFile << "\n\n\n";
 
-			// Output the result befroe bubble sort
+            // Output the result before bubble sort
             fout << "BubbleSort Before: \n";
-            for (int index = 0; index < size; index++) 
+            for (int index = 0; index < size; index++)
             {
                 // Rows of 10s
-                if (index % 10 == 0)
+                if (index != 0 && index % 10 == 0)
                 {
                     fout << "\n";
                 }
 
-                fout << arr[index] << " ";
-            }
-
 			// Output the result after bubble sort
             fout << "\nBubbleSort After: \n";
-            for (int index = 0; index < size; index++) 
+            for (int index = 0; index < size; index++)
             {
                 // Rows of 10s
-                if (index % 10 == 0)
+                if (index != 0 && index % 10 == 0)
                 {
                     fout << "\n";
                 }
@@ -156,10 +155,10 @@ int main() {
 
 			// Output the result before insertion sort
             fout << "InsertionSort Before: \n";
-            for (int index = 0; index < size; index++) 
+            for (int index = 0; index < size; index++)
             {
                 // Rows of 10s
-                if (index % 10 == 0)
+                if (index != 0 && index % 10 == 0)
                 {
                     fout << "\n";
                 }
@@ -169,35 +168,36 @@ int main() {
 
 			// Output the result after insertion sort
             fout << "\nInsertion Sort After: \n";
-            for (int index = 0; index << size; index++) 
+            for (int index = 0; index < size; index++)
             {
-                
-				// Rows of 10s
-                if (index % 10 == 0)
+
+                // Rows of 10s
+                if (index != 0 && index % 10 == 0)
                 {
-					fout << "\n";
+                    fout << "\n";
                 }
 
                 fout << insertionArr[index] << " ";
             }
 
-			// Output the number of comparisons and swaps for insertion sort
+            // Output the number of comparisons and swaps for insertion sort
             fout << "\nComparisons: " << insertComp;
             fout << "\nSwaps:" << insertSwap << "\n\n";
 
-			fout << " " << endl;
 
-			// Close the files
+            fout << " " << endl;
+
+            // Close the files
             fin.close();
             fout.close();
 
 			// Output success message
             cout << inputFile << " Processing successfully completed!" << endl;
         }
-     }
+    }
 
-     while (choice != 6);
+    while (choice != 6);
 
-     return 0;
+    return 0;
 
 }
