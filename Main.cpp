@@ -51,35 +51,35 @@ int main()
         case 1:
             // 4 random integer numbers
             inputFile = "SmallRandom.txt";
-            outputFile = "Output1SmallRandom.txt";
+            outputFile = "Out1.txt";
             SmallNumbersGenernator();
             break;
 
         case 2:
             // 25 descending integer numbers
             inputFile = "Descend.txt";
-            outputFile = "Output2Descend.txt";
+            outputFile = "Out2.txt";
             DescendingGenernator();
             break;
 
         case 3:
             // 10 ascending integer numbers
             inputFile = "Ascend.txt";
-            outputFile = "Output3Ascend.txt";
+            outputFile = "Out3.txt";
             AscendingGenernator();
             break;
 
         case 4:
             // 50 random integer numbers
             inputFile = "LargeRandom.txt";
-            outputFile = "Output4LargeRandom.txt";
+            outputFile = "Out4.txt";
             LargeRandomGenernator();
             break;
 
         case 5:
             // Empty File
             inputFile = "Empty.txt";
-            outputFile = "Output5Empty.txt";
+            outputFile = "Out5.txt";
             EmptyGenernator();
             break;
 
@@ -137,8 +137,11 @@ int main()
             PrintArrayValues(fout, bubbleArr, size, "BubbleSort After:\n");
 
             // Output the metrics for bubble sort
-            fout << "Comparisons: " << bubbleComp << "\n";
-            fout << "Swaps: " << bubbleSwap << "\n\n";
+            if (size != 0) // Only print metrics if there are elements to sort
+            {
+                fout << "Comparisons: " << bubbleComp << "\n";
+                fout << "Swaps: " << bubbleSwap << "\n\n";
+            }
 
             // Output the result before insertion sort
             PrintArrayValues(fout, arr, size, "InsertionSort Before:\n");
@@ -147,8 +150,11 @@ int main()
             PrintArrayValues(fout, insertionArr, size, "InsertionSort After:\n");
 
             // Output the metrics for insertion sort
-            fout << "Comparisons: " << insertComp << "\n";
-            fout << "Swaps: " << insertSwap << "\n\n";
+            if (size != 0) // Only print metrics if there are elements to sort
+            {
+                fout << "Comparisons: " << insertComp << "\n";
+                fout << "Swaps: " << insertSwap << "\n\n";
+            }
 
             // Close the files
             fin.close();

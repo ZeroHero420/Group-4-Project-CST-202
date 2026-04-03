@@ -153,13 +153,16 @@ void EmptyGenernator()
 void PrintArrayValues(ofstream& fout, int arr[], int size, string label) 
 {
 	// Print the label for the array (e.g., "Original Array", "Bubble Sort", etc.)
-	fout << label << endl;
-
+	if (size != 0)
+	{
+		fout << label << endl;
+	}
+	
 	//Label the columns
 	fout << "        "; // space for row labels
 
 	// Print column headers (Col(1), Col(2), ..., Col(10))
-	for (int col = 1; col <= 10; col++) 
+	for (int col = 1; col <= 10 && size != 0; col++) 
 	{
 		fout << setw(6) << ("Col(" + to_string(col) + ") ");
 	}
